@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class GUI extends JFrame{
 	
-	static boolean pressed = false;
+	static boolean pressed = true;
 	static boolean working = false;
 	static JButton calcBN = new JButton("Clock in!");
 	static double wage = 0.0;
@@ -18,11 +18,11 @@ public class GUI extends JFrame{
 	
 	public static void GUI(){
 		
-		wagebx.setBounds(200, 100, 50, 25);
+		wagebx.setBounds(200, 60, 50, 25);
 		
 		money.setBounds(300, 50, 150, 50);
 		
-		calcBN.setBounds(100, 50, 150, 50);
+		calcBN.setBounds(25, 50, 100, 40);
 		
 		calcBN.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -37,22 +37,21 @@ public class GUI extends JFrame{
 	
 	public static void calcing(){
 		
+		pressed = !pressed;
+		
 		wage = Integer.parseInt(wagebx.getText());
 		wage = wage/60;
 		wage = wage/60;
 		
 		if(pressed){//if clocked in 
 			calcBN.setText("Clock out!");
-			working  = true;
-			pressed = true;
-			
+			working  = true;	
 		}
-		else if (pressed = false){
+		else if (pressed == false){
 			calcBN.setText("Clock in!");
 			working = false;
-			pressed = false;
 		}
-		String test = null;
+		String test = "";
 		if(working){
 			while(working){
 				try {
