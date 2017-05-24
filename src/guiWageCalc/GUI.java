@@ -6,13 +6,14 @@ import java.awt.event.*;
 
 public class GUI extends JFrame{
 	
+	
+	static final JTextField wagebx = new JTextField();	
 	static boolean pressed = true;
-	static boolean working = false;
 	static JButton calcBN = new JButton("Clock in!");
 	static double wage = 0.0;
-	static double wagesec = 0.0;
-	static final JTextField wagebx = new JTextField();
-	static JLabel money = new JLabel("0.0");
+	static JLabel moneyLB = new JLabel("0.0");
+	static int inc = 0;
+	static String temp = null;
 	
 	static JFrame fme = new JFrame("Wage Calculator");
 	
@@ -20,13 +21,29 @@ public class GUI extends JFrame{
 		
 		wagebx.setBounds(200, 60, 50, 25);
 		
-		money.setBounds(300, 50, 150, 50);
+		moneyLB.setBounds(300, 50, 150, 50);
 		
 		calcBN.setBounds(25, 50, 100, 40);
 		
+		wagebx.setText("0");
+		
+		
+		wage = Integer.parseInt(wagebx.getText());
+		
 		calcBN.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				calcing();		
+				
+				inc += 1;
+				
+				if(inc == 1){
+				wage = Integer.parseInt(wagebx.getText());
+				}
+				
+				wage = wage + 1;
+				
+				
+				temp = Double.toString(wage);
+				moneyLB.setText(temp);	
 				
 			}
 		});
@@ -35,42 +52,9 @@ public class GUI extends JFrame{
 		
 	}
 	
-	public static void calcing(){
-		
-		pressed = !pressed;
-		
-		wage = Integer.parseInt(wagebx.getText());
-		wage = wage/60;
-		wage = wage/60;
-		
-		if(pressed){//if clocked in 
-			calcBN.setText("Clock out!");
-			working  = true;	
-		}
-		else if (pressed == false){
-			calcBN.setText("Clock in!");
-			working = false;
-		}
-		String test = "";
-		if(working){
-			while(working){
-				try {
-					Thread.sleep(1000);
-					wagesec = wagesec + wage;
-					test = test.valueOf(wagesec);
-					
-					money.setText(test);
-						
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}	
-			}	
-		}
-	}
-	
 	
 	public static void frame(){
-		fme.add(money);//adding the buttons
+		fme.add(moneyLB);//adding the buttons
 		fme.add(wagebx);
 		fme.add(calcBN);
 		
