@@ -14,6 +14,7 @@ public class GUI extends JFrame{
 	static JLabel moneyLB = new JLabel("0.0");
 	static int inc = 0;
 	static String temp = null;
+	static double total = 0.0;
 	
 	static JFrame fme = new JFrame("Wage Calculator");
 	
@@ -28,21 +29,18 @@ public class GUI extends JFrame{
 		wagebx.setText("0");
 		
 		
-		wage = Integer.parseInt(wagebx.getText());
+
 		
 		calcBN.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				inc += 1;
-				
-				if(inc == 1){
 				wage = Integer.parseInt(wagebx.getText());
-				}
-				
-				wage = wage + 1;
 				
 				
-				temp = Double.toString(wage);
+				total = total + wage;
+				
+				
+				temp = Double.toString(total);
 				moneyLB.setText(temp);	
 				
 			}
