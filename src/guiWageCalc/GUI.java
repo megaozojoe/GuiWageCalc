@@ -49,6 +49,7 @@ public class GUI extends JFrame{
 					calcBN.setText("Clock in!");
 				}
 				
+				loop();
 				
 				
 			}
@@ -57,6 +58,17 @@ public class GUI extends JFrame{
 		frame();
 		
 	}
+	
+	public static void loop(){
+				wagesec = wagesec + wage;
+				temp = Double.toString(wagesec);
+				moneyLB.setText(temp);	
+		
+		
+		
+	}
+	
+	
 	
 	
 	public static void frame(){
