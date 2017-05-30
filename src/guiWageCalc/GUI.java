@@ -35,42 +35,26 @@ public class GUI extends JFrame{
 		calcBN.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				calcing();
+				wage = Integer.parseInt(wagebx.getText());
+				
+				wage = wage/60;
+				wage = wage/60;
+				
+				runBL = !runBL;
+				
+				if(runBL){
+					calcBN.setText("Clock out!");
+				}
+				else if(runBL == false){
+					calcBN.setText("Clock in!");
+				}
+				
+				
+				
 			}
-		});
-		while(runBL){
-			wagesec = wagesec + wage;
-			temp = Double.toString(wagesec);
-			moneyLB.setText(temp);	
-			
-		}
-		
-		
+		});	
 		
 		frame();
-		
-	}
-	
-	public static void calcing(){
-		
-		wage = Integer.parseInt(wagebx.getText());
-		
-		wage = wage/60;
-		wage = wage/60;
-		
-		runBL = !runBL;
-		
-		if(runBL){
-			
-			calcBN.setText("Clock out!");
-			
-						
-		}
-		else if(runBL){
-			calcBN.setText("Clock out!");
-		}
-		
-		
 		
 	}
 	
